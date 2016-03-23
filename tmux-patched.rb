@@ -21,16 +21,6 @@ class Tmux < Formula
       url "https://github.com/tmux/tmux/commit/3ebcf25149d75977ea97e9d4f786e0508d1a0d5e.diff"
       sha256 "65a8bc0b2f6a8b41ad27605fd99419fff36314499969adc9d17dd3940a173508"
     end
-
-    patch do
-      url "https://gist.githubusercontent.com/waltarix/1399751/raw/8c5f0018c901f151d39680ef85de6d22649b687a/tmux-ambiguous-width-cjk.patch"
-      sha256 "c5202209c8c290385d5007209430bce58537fbb9d7461467223032621a9aea2a"
-    end
-
-    patch do
-      url "https://gist.githubusercontent.com/waltarix/1399751/raw/dc11f40266d9371e730eff41c64a70c84d34484a/tmux-pane-border-ascii.patch"
-      sha256 "949652342ee338b82a96b4e114cd3308057154de93f912704b26debae74d2fa4"
-    end
   end
 
   bottle do
@@ -51,6 +41,13 @@ class Tmux < Formula
 
   depends_on "pkg-config" => :build
   depends_on "libevent"
+
+  def patches
+    [
+      "https://gist.githubusercontent.com/waltarix/1399751/raw/8c5f0018c901f151d39680ef85de6d22649b687a/tmux-ambiguous-width-cjk.patch",
+      "https://gist.githubusercontent.com/waltarix/1399751/raw/dc11f40266d9371e730eff41c64a70c84d34484a/tmux-pane-border-ascii.patch",
+    ]
+  end
 
   def install
     system "sh", "autogen.sh" if build.head?
