@@ -1,4 +1,4 @@
-class Tmux < Formula
+class TmuxPatched < Formula
   desc "Terminal multiplexer"
   homepage "https://tmux.github.io/"
 
